@@ -1,33 +1,5 @@
-:host {
-  width: 100vw;
-  padding: 40px 0;
-}
-
-.search-result {
-  height: 90%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
-.container {
-  border: 1px solid #a1a1a1;
-  margin: 20px;
-  padding: 10px;
-}
-
-.row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #c1c1c1;
-  height: 50px;
-  border-bottom: 1px solid #fa8072;
-}
-
-.row-title {
-  width: 30%;
-}
-
-.row-value {
-  width: 70%;
+.chart-container {
+  position: relative;
+  width: 500px;
+  max-width: 100%;
 }

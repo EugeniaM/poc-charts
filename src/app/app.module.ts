@@ -1,24 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { MoviesService } from './movies.service';
+import { LegendComponent } from './legend/legend.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    InfiniteScrollModule
-  ],
-  providers: [
-    MoviesService
+    ChartsModule
   ],
   bootstrap: [AppComponent]
 })

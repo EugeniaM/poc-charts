@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.legend-sign {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border-width: 1px;
+}
+
+.checkbox-list-container {
+  padding-bottom: 2.375rem;
+}
+
+.apc-pdb-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 50%;
+  cursor: pointer;
+  color: #5A6873;
+}
+
+.apc-pdb-checkbox--list-state {
+   padding: 1rem 0;
+   justify-content: space-between;
+   margin-bottom: 0;
+}

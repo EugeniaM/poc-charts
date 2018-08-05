@@ -1,27 +1,14 @@
-<div
-  class="search-result"
-  infinite-scroll
-  [infiniteScrollDistance]="2"
-  (scrolled)="onScrollDown()"
-  [scrollWindow]="false">
-
-  <div *ngFor="let movie of movies" class="container">
-    <div class="row">
-      <div class="row-title">Title</div>
-      <div class="row-value">{{ movie.Title }}</div>
-    </div>
-    <div class="row">
-      <div class="row-title">Type</div>
-      <div class="row-value">{{ movie.Type }}</div>
-    </div>
-    <div class="row">
-      <div class="row-title">Year</div>
-      <div class="row-value">{{ movie.Year }}</div>
-    </div>
-    <div class="row">
-      <div class="row-title">ID</div>
-      <div class="row-value">{{ movie.imdbID }}</div>
-    </div>
+<div class="row">
+  <div class="chart-container">
+    <canvas baseChart #myChart="base-chart"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
   </div>
-
 </div>
+<app-legend [chart]="myChart.chart"></app-legend>

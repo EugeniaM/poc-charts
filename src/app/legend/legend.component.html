@@ -1,0 +1,19 @@
+<div class="checkbox-list-container">
+  <ng-container *ngFor="let item of chart.data.datasets; let i = index">
+    <label class="apc-pdb-checkbox apc-pdb-checkbox--list-state">
+    <span class="apc-pdb-checkbox__label">
+      <span class="legend-sign"
+            [ngStyle]="{
+            'border-color': item.borderColor,
+            'border-style': item.borderDash ? 'dashed' : 'solid',
+            'background-color': item.borderDash ? '' : item.borderColor}"></span>
+      <span>{{ item.label }}</span>
+    </span>
+      <input type="checkbox"
+             [checked]="!chart.getDatasetMeta(i).hidden"
+             class="apc-pdb-checkbox__input"
+             (change)="onSelect($event.target.checked, i)">
+      <span class="apc-pdb-checkbox__checkmark"></span>
+    </label>
+  </ng-container>
+</div>
