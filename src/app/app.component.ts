@@ -29,6 +29,10 @@ export class AppComponent implements AfterViewInit {
       yAxes: [{
         type: 'linear',
         display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Left axis',
+        },
         position: 'left',
         id: 'y-axis-1',
         ticks: {
@@ -39,6 +43,10 @@ export class AppComponent implements AfterViewInit {
       }, {
         type: 'linear',
         display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Right axis',
+        },
         position: 'right',
         id: 'y-axis-2',
 
@@ -48,13 +56,6 @@ export class AppComponent implements AfterViewInit {
         },
         ticks: {
           max: 350,
-          min: 0,
-          stepSize: 50
-        }
-      }],
-      xAxes: [{
-        ticks: {
-          max: 365,
           min: 0,
           stepSize: 50
         }
@@ -110,7 +111,7 @@ export class AppComponent implements AfterViewInit {
       this.myChart.chart.data.datasets[0].data.push(Math.floor(Math.random() * (21)) + 80);
       this.myChart.chart.data.datasets[1].data.push(Math.floor(Math.random() * (51)) + 250);
       this.myChart.chart.data.datasets[2].data.push(Math.floor(Math.random() * (31)) + 70);
-      this.myChart.chart.data.labels.push(`Some label ${i}`);
+      this.myChart.chart.data.labels.push(`Some label`);
     }
 
     this.myChart.chart.update();
