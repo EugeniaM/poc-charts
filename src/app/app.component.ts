@@ -1,5 +1,5 @@
 // tslint:disable:no-any
-import { Component, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 @Component({
@@ -8,16 +8,16 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
   styleUrls: ['./app.component.css'],
   providers: [ BaseChartDirective ]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   @ViewChild('myChart') myChart: BaseChartDirective;
 
   // lineChart
   public lineChartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A', yAxisID: 'y-axis-1'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B', yAxisID: 'y-axis-1'},
-    {data: [1, 4, 7, 9, 1, 2, 4], label: 'Series C', yAxisID: 'y-axis-2'}
+    {data: [], label: 'Series A', yAxisID: 'y-axis-1'},
+    {data: [], label: 'Series B', yAxisID: 'y-axis-2'},
+    {data: [], label: 'Series C', yAxisID: 'y-axis-1'},
   ];
-  public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
     responsive: true,
     elements: {
@@ -31,6 +31,11 @@ export class AppComponent {
         display: true,
         position: 'left',
         id: 'y-axis-1',
+        ticks: {
+          max: 250,
+          min: 0,
+          stepSize: 50
+        }
       }, {
         type: 'linear',
         display: true,
@@ -41,6 +46,18 @@ export class AppComponent {
         gridLines: {
           drawOnChartArea: false, // only want the grid lines for one axis to show up
         },
+        ticks: {
+          max: 350,
+          min: 0,
+          stepSize: 50
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          max: 365,
+          min: 0,
+          stepSize: 50
+        }
       }]
     }
   };
@@ -87,6 +104,15 @@ export class AppComponent {
     console.log(e);
   }
 
-  constructor(
-  ) { }
+  ngAfterViewInit() {
+    // for test purpose only
+    for (let i = 0; i < 365; i++) {
+      this.myChart.chart.data.datasets[0].data.push(Math.floor(Math.random() * (21)) + 80);
+      this.myChart.chart.data.datasets[1].data.push(Math.floor(Math.random() * (51)) + 250);
+      this.myChart.chart.data.datasets[2].data.push(Math.floor(Math.random() * (31)) + 70);
+      this.myChart.chart.data.labels.push(`Some label ${i}`);
+    }
+
+    this.myChart.chart.update();
+  }
 }
