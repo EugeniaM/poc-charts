@@ -26,6 +26,14 @@ export class AppComponent implements AfterViewInit {
       }
     },
     scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: true,
+          maxRotation: 0,
+          minRotation: 0,
+          maxTicksLimit: 6
+        }
+      }],
       yAxes: [{
         type: 'linear',
         display: true,
@@ -111,7 +119,7 @@ export class AppComponent implements AfterViewInit {
       this.myChart.chart.data.datasets[0].data.push(Math.floor(Math.random() * (21)) + 80);
       this.myChart.chart.data.datasets[1].data.push(Math.floor(Math.random() * (51)) + 250);
       this.myChart.chart.data.datasets[2].data.push(Math.floor(Math.random() * (31)) + 70);
-      this.myChart.chart.data.labels.push(`Some label`);
+      this.myChart.chart.data.labels.push(`Label ${i}`);
     }
 
     this.myChart.chart.update();
